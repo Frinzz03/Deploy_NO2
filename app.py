@@ -6,7 +6,7 @@ from PIL import Image
 
 # --- Konfigurasi Halaman ---
 st.set_page_config(
-    page_title="Prediksi NO2 Gresik",
+    page_title="Prediksi NO2 Kab Sidoarjo",
     page_icon="☁️",
     layout="wide"
 )
@@ -31,7 +31,7 @@ try:
     models, scalers, data = load_all_assets()
     
     st.title('☁️ Dashboard Interaktif Prediksi Konsentrasi NO2')
-    st.write("Aplikasi ini berisi dua mode prediksi: (1) Prediksi Otomatis untuk Gresik, dan (2) Prediksi Manual Interaktif.")
+    st.write("Aplikasi ini berisi dua mode prediksi: (1) Prediksi Otomatis untuk Sidoarjo, dan (2) Prediksi Manual Interaktif.")
 
     # --- Tentukan Model Terbaik & Median ---
     BEST_MODEL_NAME = 'h1-h3'
@@ -43,10 +43,10 @@ try:
     
 
     # ==========================================================
-    # BAGIAN 1: PREDIKSI OTOMATIS (Gresik)
+    # BAGIAN 1: PREDIKSI OTOMATIS (Sidoarjo)
     # ==========================================================
-    with st.expander("Panel 1: Prediksi Otomatis (Gresik)", expanded=True):
-        st.subheader("📈 Prediksi Otomatis Hari Berikutnya (Gresik)")
+    with st.expander("Panel 1: Prediksi Otomatis (Sidoarjo)", expanded=True):
+        st.subheader("📈 Prediksi Otomatis Hari Berikutnya (Sidoarjo)")
         st.write(f"Fitur ini secara otomatis mengambil 3 data terakhir dari dataset di atas dan memprediksi menggunakan model terbaik ({BEST_MODEL_NAME}).")
 
         # --- Logika Prediksi Otomatis ---
@@ -77,7 +77,7 @@ try:
     # ==========================================================
     # BAGIAN 3: GRAFIK DATA (DIPINDAHKAN KE ATAS)
     # ==========================================================
-    st.header("📊 Grafik Data Historis NO2")
+    st.header("📊 Sidoarjo Data Historis NO2")
     st.write("Grafik ini menunjukkan data historis yang digunakan untuk melatih semua model prediksi di bawah.")
     
     chart_data = data.set_index('date')['NO2']
@@ -147,4 +147,5 @@ except FileNotFoundError as e:
     st.info("Pastikan Anda sudah mengekspor SEMUA file (knn_model_h2.joblib, scaler_h2.joblib, dst.)")
     st.info("Dan pastikan Anda sudah melakukan 'Commit & Push' ke GitHub.")
 except Exception as e:
+
     st.error(f"Terjadi error: {e}")
